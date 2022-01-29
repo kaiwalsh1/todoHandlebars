@@ -35,4 +35,17 @@ module.exports = {
             res.json(e);
         }
     },
+
+    getUserById: async (req, res) => {
+        try {
+            const userData = await User.findByPk(req.params.userId);
+            const user = userData.get({ plain:true });
+// tell node we want to render singleUser template
+            res.render('singleUser', {
+                user
+            });
+        } catch (e) {
+            res.json(e);
+        }
+    },
 };
