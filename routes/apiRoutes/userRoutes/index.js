@@ -3,12 +3,16 @@ const {
     createUser,
     getAllUsers,
     getUserById,
+    login,
 } = require('../../../controllers/userController');
 
 // route - /api/users
 router.route('/')
     .get(getAllUsers)
     .post(createUser);
+
+
+router.post('/login', login);
 
 router.route('/:userId')
     .get(getUserById);
